@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Add Bootstrap CSS link -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url('https://professor-excel.com/wp-content/uploads/2016/01/Wallpaper_Excel_1.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      padding: 0%;
+    }
+ 
+    .container {
+      margin-top: 50px;
+      padding: 20px;
+    }
+ 
+    /* Add background color to the table */
+    table {
+      background-color: lightgreen; /* Set your desired background color */
+    }
+  </style>
+  <title>Bootstrap Example</title>
+</head>
+<body>
+ 
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Select your Excel File</span>
+          </div>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" (change)="onFileSelected($event)" accept=".xlsx">
+            <label class="custom-file-label">{{ selectedFileName || 'Choose file' }}</label>
+          </div>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" (click)="uploadFile()">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <div *ngIf="dataRetrieved" class="mt-4">
+      <h2>Data Retrieved</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>GPN</th>
+              <th>Email</th>
+              <th>ContactNumber</th>
+              <th>Address</th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of retrievedData">
+              <td>{{ row.gpn }}</td>
+              <td>{{ row.email }}</td>
+              <td>{{ row.contactNumber }}</td>
+              <td>{{ row.address }}</td>
+              <td>{{ row.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Add Bootstrap JS and Popper.js scripts (optional but recommended for certain Bootstrap features) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+</body>
+</html>
