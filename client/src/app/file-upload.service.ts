@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FileUploadService {
-  private apiUrl = 'http://localhost:5011'; // Adjust the base API URL
+  private apiUrl = 'http://localhost:5011'; 
 
   constructor(private http: HttpClient) { }
 
@@ -15,8 +15,8 @@ export class FileUploadService {
     const formData = new FormData();
     formData.append('file', file, file.name);
 
-    // Note: Omit the base URL if using an absolute URL
-    const uploadUrl = `${this.apiUrl}/Upload`;
+    
+    const uploadUrl = `${this.apiUrl}/EmployeeUpload/Upload`;
     
     return this.http.post(uploadUrl, formData)
       .pipe(
