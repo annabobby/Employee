@@ -28,10 +28,9 @@ export class AppComponent {
     }
  
     try {
-      this.fileUploadService.uploadFile(this.selectedFile).subscribe(async(result)=>{
-        alert('File uploaded successfully');
-        await this.retrieveDataFromDatabase(); // Trigger data retrieval after upload
-      });
+      await this.fileUploadService.uploadFile(this.selectedFile);
+      alert('File uploaded successfully');
+      await this.retrieveDataFromDatabase(); // Trigger data retrieval after upload
     } catch (error: any) {
       alert('Error uploading file:'+ error);
       // Handle errors

@@ -11,20 +11,26 @@ export class FileUploadService {
 
   constructor(private http: HttpClient) { }
 
-  uploadFile(file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('file', file, file.name);
+  // uploadFile(file: File): Observable<any> {
+  //   const formData = new FormData();
+  //   formData.append('file', file, file.name);
 
     
-    const uploadUrl = `${this.apiUrl}/EmployeeUpload/Upload`;
+  //   const uploadUrl = `${this.apiUrl}/EmployeeUpload/Upload`;
     
-    return this.http.post(uploadUrl, formData)
-      .pipe(
-        catchError(error => {
-          console.error('Error uploading file:', error);
-          return throwError(error);
-        })
-      );
+  //   return this.http.post(uploadUrl, formData)
+  //     .pipe(
+  //       catchError(error => {
+  //         console.error('Error uploading file:', error);
+  //         return throwError(error);
+  //       })
+  //     );
+  // }
+
+  uploadFile(file: File) {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post(this.apiUrl, formData);
   }
 
   retrieveDataFromDatabase(): Observable<any> {
